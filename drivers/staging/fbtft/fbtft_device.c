@@ -273,6 +273,44 @@ static const s16 waveshare32b_init_sequence[] = {
 /* Supported displays in alphabetical order */
 static struct fbtft_device_display displays[] = {
 	{
+                .name = "ssd1963",
+                .pdev = &(struct platform_device) {
+                        .name = "fb_ssd1963",
+                        .id = 0,
+                        .dev = {
+		                .release = fbtft_device_pdev_release,
+		                .platform_data = &(struct fbtft_platform_data) {
+	                            .display = {
+	                               .buswidth = 16,
+                                       .backlight = 1,
+	                            },
+				    .gpios = (const struct fbtft_gpio []) {
+				       { "reset", 2 },
+				       { "dc", 3 },
+				       { "wr", 4 },
+				       { "db00", 17 },
+				       { "db01", 27 },
+				       { "db02", 22 },
+				       { "db03", 6 },
+				       { "db04", 13 },
+				       { "db05", 19 },
+				       { "db06", 26 },
+				       { "db07", 20 },
+				       { "db08", 5 },
+				       { "db09", 8 },
+				       { "db10", 18 },
+				       { "db11", 23 },
+				       { "db12", 24 },
+				       { "db13", 21 },
+				       { "db14", 12 },
+				       { "db15", 16 },
+				       {},
+				    },
+				 },
+		        },
+                }
+        }, 
+	{
 		.name = "adafruit18",
 		.spi = &(struct spi_board_info) {
 			.modalias = "fb_st7735r",

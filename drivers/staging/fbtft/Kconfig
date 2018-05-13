@@ -147,6 +147,12 @@ config FB_TFT_SSD1331
 	help
 	  Framebuffer support for SSD1331
 
+config FB_TFT_SSD1963
+	tristate "FB driver for the SSD1963 LCD Controller"
+	depends on FB_TFT
+	help
+	  Framebuffer support for SSD1963
+
 config FB_TFT_SSD1351
 	tristate "FB driver for the SSD1351 LCD Controller"
 	depends on FB_TFT
